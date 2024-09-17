@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-import imp
+import importlib  # 修改点1: 将 imp 替换为 importlib
 import io
 import sys
 import os
@@ -8,11 +8,10 @@ try:
     from setuptools import setup
 except ImportError:
     from ez_setup import use_setuptools
-
     use_setuptools()
 
-from setuptools import find_packages, setup
-
+# from setuptools import find_packages, setup  # 修改点2: 移除了重复导入的 setup
+from setuptools import find_packages  # 修改点2: 保留 find_packages
 
 def read(*filenames, **kwargs):
     encoding = kwargs.get("encoding", "utf-8")
@@ -22,7 +21,6 @@ def read(*filenames, **kwargs):
         with io.open(filename, encoding=encoding) as f:
             buf.append(f.read())
     return sep.join(buf)
-
 
 setup(
     name="pydmps",
@@ -40,4 +38,5 @@ setup(
         "control",
     ],
     classifiers=[],
+    description_file="README.md",  # 修改点3: 添加 description_file 以避免未来的警告
 )
