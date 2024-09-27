@@ -34,6 +34,8 @@ dmp.imitate_path(y_des=y_des)
 y_track_normal, _, _ = dmp.rollout(tau=1)
 y_track_slow, _, _ = dmp.rollout(tau=0.1)
 y_track_fast, _, _ = dmp.rollout(tau=4)
+
+# 图窗1
 plt.figure(1, figsize=(6, 6))
 
 plt.plot(y_track_normal[:, 0], y_track_normal[:, 1], "b", lw=2)
@@ -46,10 +48,11 @@ plt.axis("equal")
 plt.xlim([-2, 2])
 plt.ylim([-2, 2])
 
+# 图窗2
 plt.figure(2)
 plt.subplot(3, 1, 1)
 plt.title("DMP system - draw number 2")
-plt.plot(y_track_normal)
+plt.plot(y_track_normal)  # 横坐标是timesteps时间步 纵坐标是x，y坐标变化 蓝色x，红色y
 plt.ylabel('Normal')
 plt.subplot(3, 1, 2)
 plt.plot(y_track_slow)

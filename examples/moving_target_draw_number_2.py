@@ -30,18 +30,21 @@ dmp = pydmps.dmp_discrete.DMPs_discrete(n_dmps=2, n_bfs=500, ay=np.ones(2) * 10.
 
 dmp.imitate_path(y_des=y_des)
 
+# 图窗1
 plt.figure(1, figsize=(6, 6))
 
 y_track, dy_track, ddy_track = dmp.rollout()
 plt.plot(y_track[:, 0], y_track[:, 1], "b--", lw=2, alpha=0.5)
 
 # run while moving the target up and to the right
+# 运行时将目标向上向右移动
 y_track = []
 dmp.reset_state()
 for t in range(dmp.timesteps):
     y, _, _ = dmp.step()
     y_track.append(np.copy(y))
     # move the target slightly every time step
+    # 每个时间步都稍微移动目标
     dmp.goal += np.array([1e-2, 1e-2])
 y_track = np.array(y_track)
 
