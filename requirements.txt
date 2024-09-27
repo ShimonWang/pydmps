@@ -1,0 +1,5 @@
+numpy~=2.0.1
+matplotlib~=3.9.1
+setuptools~=68.2.0
+seaborn~=0.13.2
+ez_setup~=0.9
